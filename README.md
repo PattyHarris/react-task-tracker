@@ -95,4 +95,12 @@ This README will contain notes that won't make sense to anyone except me :)
     }
 ```
 12.  The CSS is pulled from the tutorial github file.  
-13.  
+13.  Flexbox is used for the 'grid' styling.
+14.  The click even on the Add button is a prop since the click even for all buttons are generally not going to be the same.  Interesting.
+15.  Console.log - pass in the event:
+```
+    const onClick = (e) => {
+        console.log(e);
+    }
+
+```
