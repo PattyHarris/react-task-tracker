@@ -175,4 +175,47 @@ const Tasks = () => {
     return .....
 }
 ```
-20.  You can manage state with Redux, but this course is not going to go into that.  Instead, we'll move the 'state' to App.js so it's available to other components.
+20.  You can manage state with Redux or the context API, but this course is not going to go into that.  Instead, we'll move the 'state' to App.js so it's available to other components.
+21.  Installed react icons (in lieu of using something like Font Awesome) - for example, the 'delete' icon will be from this package - you need to restart the dev server as well:
+```
+    npm install react-icons
+    ....
+    ....
+    import {FaTimes} from 'react-icons/fa'
+
+    export const Task = ({ task }) => {
+    return (
+        <div className="task">
+            <h3>
+                {task.text} <FaTimes />
+            </h3>
+            <p>{task.day}</p>
+        </div>
+    )
+    };
+
+    export default Task;
+```
+22.  When the user clicks the 'x', we want to delete the task.  We don't have access to this state from Task (since we're not using Redux or the context API).  Instead, we'll pass down a function as a prop that can be used to delete the item.  The prop is passed from App.js to Tasks and then to Task.  Note that the 'onClick' handler in Task there's a {' '} following the 'h3' tag - not sure why this space is needed since it doesn't seem to make much of a difference whether it's there or not. 
+23.  To pass in the actual task ID, we need to call the onDelete prop directly as a function and pass in the task ID:
+```
+            <h3>
+                {task.text}{' '}
+                <FaTimes style={{color: 'red', cursor: 'pointer'}} 
+                    onClick={ () => onDelete(task.id) }/>
+            </h3>
+
+            ...instead of onClick={onDelete}
+
+```
+24.  Like 'map', use 'filter' with a function that returns a list that excludes the task that will be deleted.  To alter the 'state', we use setTasks as mentioned above - that was defined as part of the 'useState' hook.
+25.  To refine the delete code a bit further, check for no more tasks (App.js):
+```
+        <div className="container">
+        <Header title="Task Tracker"/>
+        { tasks.length > 0 ? (<Tasks tasks={tasks} onDelete={deleteTask} />) : 
+            ( 'No tasks available.')}
+        </div>
+
+```
+26.  
