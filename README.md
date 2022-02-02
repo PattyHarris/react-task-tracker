@@ -104,3 +104,74 @@ This README will contain notes that won't make sense to anyone except me :)
     }
 
 ```
+16. Tasks component: temporarily added some dummy tasks - the first 2 of these are from the db.json file in the git repository for this course - this was added about the Tasks function definition.
+```
+    // Temporary...
+    const tasks = [
+        {
+            "id": 1,
+            "text": "Doctors Appointment",
+            "day": "Feb 5th at 2:30pm",
+            "reminder": true
+        },
+        {
+            "id": 2,
+            "text": "Meeting at School",
+            "day": "Feb 6th at 1:30pm",
+            "reminder": true
+        },
+        {
+            "id": 3,
+            "text": "Food shopping",
+            "day": "Feb 5th at 2:30pm",
+            "reminder": false
+        }  
+    ]
+
+const Tasks = () => { .... }
+
+```
+17.  Use the map method to create a list.  The map method takes an arrow function.  Each child in the list needs a unique key prop - otherwise, you'll get a warning about it.
+```
+    const Tasks = (props) => {
+    return (
+        <>
+        {tasks.map( (task) => (
+            <h3 key={task.id}>{task.text}</h3>
+        ))}
+        </>
+    )
+};
+```
+18.  Instead of the tasks array, we want to use a hook.  In this case, we're using the 'useState' hook, since it's a 'state' type of list.  
+```
+    import {useState} from 'react'
+```
+19.  Using the hook: in the following, 'tasks' is the state and 'setTasks' is the function.  In 'useState', we pass in the default, which is the temporary array we used above.  If you want to change any part of the state, you use 'setTasks'.
+```
+const Tasks = () => {
+
+    const [tasks, setTasks] = useState([
+        {
+            "id": 1,
+            "text": "Doctors Appointment",
+            "day": "Feb 5th at 2:30pm",
+            "reminder": true
+        },
+        {
+            "id": 2,
+            "text": "Meeting at School",
+            "day": "Feb 6th at 1:30pm",
+            "reminder": true
+        },
+        {
+            "id": 3,
+            "text": "Food shopping",
+            "day": "Feb 5th at 2:30pm",
+            "reminder": false
+        }  
+    ])
+
+    return .....
+}
+```
