@@ -175,3 +175,4 @@ const Tasks = () => {
     return .....
 }
 ```
+20.  You can manage state with Redux, but this course is not going to go into that.  Instead, we'll move the 'state' to App.js so it's available to other components.
