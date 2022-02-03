@@ -247,4 +247,7 @@ const Tasks = () => {
 ```
 33.  We also want to perform some validation of the input.
 34.  To add the task, we need to add our own ID since we're using static data.  The instructor doesn't take into account the existing IDs...I think a better hack is to just use the next number available...
-35.  
+35.  To show and hide the 'add task' input form fields, added another state ('showAddTask'), which as a bool can be used to show the form:
+```
+    { showAddTask && <AddTask onAdd={addTask} /> }
+```
