@@ -224,3 +224,27 @@ const Tasks = () => {
 ```
     <div className={ `task ${task.reminder ? 'reminder' : ''}`}     
 ```
+29.  Add a task: each input will have its own piece of state - component level state, not app level state.  So again, we need to import 'useState'.  Here again as well, as for tasks, 'text' is the state, and 'setText' is the function used to modify state - similarly for each of the other inputs:
+```
+    const [text, setText] = useState('');
+    const [day, setDay] = useState('');
+    const [reminder, setReminder] = useState(false);
+```
+30.  For the 'text' input, we set the initial value to the state 'text', not to be confusing...and then use the 'setText' state modifier function to change it's state to the event value (and similarly for the other 2 inputs):
+```
+            <div className="form-control">
+                <label>Task</label>
+                <input type="text" 
+                placeholder="Add Task"
+                value={text}
+                onChange={ (e) => setText(e.target.value)}
+                />
+```
+31.  To verify that the input changes are working, use the React-Dev tools by examining the current state of the inputs.  As you type in the input or check/uncheck the box, the states will change accordingly.
+32.  The 'onSubmit' takes as input the event 'e' so that we can prevent submission to the default page:
+```
+    e.preventDefault();
+```
+33.  We also want to perform some validation of the input.
+34.  To add the task, we need to add our own ID since we're using static data.  The instructor doesn't take into account the existing IDs...I think a better hack is to just use the next number available...
+35.  
