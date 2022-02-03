@@ -30,10 +30,22 @@ function App() {
     setTasks(tasks.filter( (task) => task.id !== id));
   }
 
+  // Toggle the reminder flag.  Create a new list where if we find the task with this ID,
+  // copy over all the data (spread operator) except the reminder, which is set as as the 
+  // opposite of its  current value.
+  const toggleReminder = (id) => {
+    setTasks(
+      tasks.map( (task) => task.id === id ? { ...task, reminder: !task.reminder }
+                                          : task )
+    )
+  }
+
   return (
     <div className="container">
       <Header title="Task Tracker"/>
-      { tasks.length > 0 ? (<Tasks tasks={tasks} onDelete={deleteTask} />) : 
+      { tasks.length > 0 ? (
+        <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/>
+      ) : 
         ( 'No tasks available.')}
     </div>
 

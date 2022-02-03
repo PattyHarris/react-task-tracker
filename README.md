@@ -218,4 +218,9 @@ const Tasks = () => {
         </div>
 
 ```
-26.  
+26.  Reminder: when the user double-clicks the task, the true/false of the reminder will be turned to the opposite of what it is set.  This will use the CSS task.reminder class that sets a border to green.
+27.  React developers console: you may need to use the top >> menu item to see the 'Components' menu.  If you click on the 'App' component, the right pane will show 'props'.  Double-click on a task and you can see the reminder state change.  Pretty cool.
+28.  To show the green border, change the class on the task 'div' - note the back-ticks and the ${} for adding JS.
+```
+    <div className={ `task ${task.reminder ? 'reminder' : ''}`}     
+```
