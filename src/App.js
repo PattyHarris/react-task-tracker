@@ -27,6 +27,15 @@ function App() {
     return data;
   }
 
+    // Fetch a single task.
+    const fetchTask = async (id) => {
+      const res = await fetch(`http://localhost:5000/tasks/${id}`);
+      const data = await res.json();
+  
+      return data;
+    }
+  
+
   // Add a task - uses a random number for the new ID...
   const addTask = async (task) => {
     const res = await fetch('http://localhost:5000/tasks', {
@@ -57,9 +66,23 @@ function App() {
   // Toggle the reminder flag.  Create a new list where if we find the task with this ID,
   // copy over all the data (spread operator) except the reminder, which is set as as the 
   // opposite of its  current value.
-  const toggleReminder = (id) => {
+  const toggleReminder = async (id) => {
+
+    const taskToToggle = await fetchTask(id);
+    const updateTask = {...taskToToggle, reminder: !taskToToggle.reminder};
+
+    const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(updateTask)
+    })
+
+    const data = await res.json();
+
     setTasks(
-      tasks.map( (task) => task.id === id ? { ...task, reminder: !task.reminder }
+      tasks.map( (task) => task.id === id ? { ...task, reminder: !data.reminder }
                                           : task )
     )
   }
