@@ -291,3 +291,15 @@ const Tasks = () => {
     - Giving it an empty array acts like componentDidMount as in, it only runs once.
     - Giving it no second argument acts as both componentDidMount and componentDidUpdate, as in it runs first on mount and then on every re-render.
     - Giving it an array as second argument with any value inside, eg , [variable1] will only execute the code inside your useEffect hook ONCE on mount, as well as whenever that particular variable (variable1) changes.
+46.  Routing: install react router -> npm install react-router-dom
+47.  To show how react-router works, we'll use an About page that will be accessed via the main page footer.
+48.  Everything we returned from App.js is wrapped in <Router></Router>.  Note that 'Router" is imported as an alias of BrowserRouter.  Then you can use Route to setup the About component.
+49.  Route has changed in V6 - see the comments or the updated video https://www.youtube.com/watch?v=k2Zk5cbiZhg.  This code as committed is correct for V6.
+50.  Instead of using an 'a' tag to link from the About page back to the main page, use react-router Link (do the same thing in Footer as well) - the pages no longer reload - transition is more smooth.
+```
+    <a href="/">Go Back</a>
+
+    ... use instead
+    <Link to='/'>Go Back</Link>
+```
+51.  To remove the 'Add' button from the About page, use the 'useLocation' hook from react-router-dom - see Header.
