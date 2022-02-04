@@ -283,3 +283,6 @@ const Tasks = () => {
         fetchTasks();
     }, [])
 ```
+43.  We don't want to call 'fetchTasks' inside 'useEffect' since you might want to use 'fetchTasks' elsewhere.  So 'fetchTasks' is moved to it's own function and then useEffect is modified as shown:
+```
+```
