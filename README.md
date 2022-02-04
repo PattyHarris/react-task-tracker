@@ -286,3 +286,4 @@ const Tasks = () => {
 43.  We don't want to call 'fetchTasks' inside 'useEffect' since you might want to use 'fetchTasks' elsewhere.  So 'fetchTasks' is moved to it's own function and then useEffect is modified as shown:
 ```
 ```
+44.  The 'await fetch' in the 'deleteTasks' is coded that way since we're not getting return value back.
