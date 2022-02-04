@@ -21,7 +21,7 @@
     {
       "text": "Take test",
       "day": "Feb 7th 11:00 a.m.",
-      "reminder": true,
+      "reminder": false,
       "id": 4
     }
   ]

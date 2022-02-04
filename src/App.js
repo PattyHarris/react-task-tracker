@@ -17,7 +17,7 @@ function App() {
     }
 
     getTasks();
-  })
+  }, [])
 
   // Fetch tasks.
   const fetchTasks = async () => {
@@ -27,13 +27,13 @@ function App() {
     return data;
   }
 
-    // Fetch a single task.
-    const fetchTask = async (id) => {
-      const res = await fetch(`http://localhost:5000/tasks/${id}`);
-      const data = await res.json();
-  
-      return data;
-    }
+  // Fetch a single task.
+  const fetchTask = async (id) => {
+    const res = await fetch(`http://localhost:5000/tasks/${id}`);
+    const data = await res.json();
+
+    return data;
+  }
   
 
   // Add a task - uses a random number for the new ID...
