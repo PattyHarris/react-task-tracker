@@ -251,3 +251,35 @@ const Tasks = () => {
 ```
     { showAddTask && <AddTask onAdd={addTask} /> }
 ```
+36.  Static Assets: the instructions given by node tell you to run 'npm run build' to create an optimized production build for deployment.  The results are in /build.  To test, you need the npm package 'serve' and then you run 'serve -s build' - 'serve' is a basic http server.
+```
+    > sudo npm install -g serve
+```
+37.  And then to run production on port 8000 (and then check localhost:8000):
+```
+    > serve -s build -p 8000
+```
+38. Lastly, json-server is used to write http requests against mock data.  The server is install in this case locally (not globally as instructed on their web page):
+```
+    > npm install json-server
+```
+39.  package.json includes a script to run the server - once started, a default db.json file is created (which we will edit) - in a second tab in VSCode, start the dev server (npm start)...
+```
+    "server": "json-server --watch db.json --port 5000"
+    ....
+    > npm run server
+```
+40.  Move the static data in App.js to db.json - the 'useState' will have an empty array as the default.  The data will need to be refactored into correct JSON - keys and strings need double quotes.  json-server will also create ID's - so we won't need the fake ID's anymore..
+41.  To simulate a 'get', http://localhost/5000/tasks - shows the tasks we have so far.
+42.  To load the data on start, we'll use the 'useEffect' hook, which is used (duh) for handling side effects.  'useEffect' takes a callback function as input - you can't use async on that callback function - you need to use async/await on the 'fetch' - we're also passing in a dependency array - in this case it's empty.
+```
+    useEffect( () => {
+        const fetchTasks = async () => {
+        const res = await fetch("http://localhost:5000/tasks");
+        const data = await res.json();
+
+        console.log(data);
+        }
+        fetchTasks();
+    }, [])
+```
