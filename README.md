@@ -310,4 +310,5 @@ The instructor updated some of the code and added a bit more to accommodate the 
 
 1. 'TaskDetails' is accessed via a 'Link' in Task.js.  Import 'Link' as done above.
 2. In V5 there was a 'Redirect' - that is now called 'Navigate'.  See 'TaskDetails' for usage.
-3. A better method is to use the new hook, 'useNavigate'.
+3. A better method is to use the new hook, 'useNavigate'.  With this you can specify the path, but you can also specify a number, e.g. -1, that pops you back one in this case.  -2 pops you back 2...
+4. You can also use the 'useLocation' hook to get the pathname - not implemented.  
