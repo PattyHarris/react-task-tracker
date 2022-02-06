@@ -303,3 +303,11 @@ const Tasks = () => {
     <Link to='/'>Go Back</Link>
 ```
 51.  To remove the 'Add' button from the About page, use the 'useLocation' hook from react-router-dom - see Header.
+
+## Update for react-router-dom V6
+
+The instructor updated some of the code and added a bit more to accommodate the update to V6.  In this updated video, TaskDetails was added to show another route that is parameterized.
+
+1. 'TaskDetails' is accessed via a 'Link' in Task.js.  Import 'Link' as done above.
+2. In V5 there was a 'Redirect' - that is now called 'Navigate'.  See 'TaskDetails' for usage.
+3. A better method is to use the new hook, 'useNavigate'.
